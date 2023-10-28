@@ -1,0 +1,14 @@
+server:
+  type: default
+  maxThreads: 1024
+
+logging:
+  level: INFO
+  loggers:
+    "com.example.package": DEBUG
+  appenders:
+    - type: console
+    - type: file
+      currentLogFilename: C:\development\HManager\Logs/application.log
+      archivedLogFilenamePattern: C:\development\HManager\Logs/application-%d.log.gz
+      archivedFileCount: 5
