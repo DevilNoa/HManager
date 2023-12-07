@@ -14,6 +14,9 @@ public class Employ {
         this.buildingAddress = buildingAddress;
     }
 
+    public Employ() {
+    }
+
     public int getId() {
         return id;
     }

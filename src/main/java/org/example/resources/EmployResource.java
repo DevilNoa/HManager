@@ -31,10 +31,10 @@ public class EmployResource {
 
   // Read an employ by name endpoint
   @GET
-  @Path("/{name}")
-  public Response getEmployByName(@PathParam("name") String name) {
+  @Path("/{id}")
+  public Response getEmployByID(@PathParam("id") int id) {
     try {
-      Employ employ = employServices.getEmployByName(name);
+      Employ employ = employServices.getEmployByID(id);
       if (employ != null) {
         return Response.ok(employ).build();
       } else {
@@ -58,11 +58,11 @@ public class EmployResource {
 
   // Update a employ endpoint
   @PUT
-  @Path("/{name}")
+  @Path("/{id}")
   @Consumes(MediaType.APPLICATION_JSON)
-  public Response updateEmploy(@PathParam("name") String name, Employ newEmploy) {
+  public Response updateEmploy(@PathParam("id") Integer id  , Employ newEmploy) {
     try {
-      Employ employ = employServices.updateEmploy(name, newEmploy);
+      Employ employ = employServices.updateEmploy(id, newEmploy);
       if (employ != null) {
         return Response.ok(employ).build();
       } else {
@@ -75,17 +75,15 @@ public class EmployResource {
 
   // Delete a employ endpoint
   @DELETE
-  @Path("/{name}")
-  public Response deleteEmploy(@PathParam("name") String name) {
-    try {
-      boolean deleted = employServices.deleteEmploy(name);
-      if (deleted) {
-        return Response.ok().build();
-      } else {
-        return Response.status(Response.Status.NOT_FOUND).build();
-      }
-    } catch (SQLException e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+  @Path("/{id}")
+  public Response deleteEmploy(@PathParam("id") int id) throws SQLException {
+    boolean success = EmployServices.deleteEmploy(id);
+    if (success) {
+      return Response.ok("Employ deleted successfully").build();
+    } else {
+      return Response.status(Response.Status.NOT_FOUND).build();
     }
   }
+
+
 }

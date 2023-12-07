@@ -6,7 +6,7 @@ import org.example.core.Employ;
 import org.example.dao.EmployDAO;
 
 public class EmployServices {
-  EmployDAO employDAO;
+  static EmployDAO employDAO;
 
   public EmployServices(EmployDAO employDAO) {
     this.employDAO = employDAO;
@@ -18,8 +18,8 @@ public class EmployServices {
   }
 
   // Method to get an employ by name
-  public Employ getEmployByName(String name) throws SQLException {
-    return employDAO.getEmployByName(name);
+  public Employ getEmployByID(int id) throws SQLException {
+    return employDAO.getEmployByID(id);
   }
 
   // Method to get all employs
@@ -28,12 +28,12 @@ public class EmployServices {
   }
 
   // Method to update an employ
-  public Employ updateEmploy(String name, Employ newEmploy) throws SQLException {
-    return employDAO.updateEmploy(name, newEmploy);
+  public Employ updateEmploy(int id, Employ newEmploy) throws SQLException {
+    return employDAO.updateEmploy(id, newEmploy);
   }
 
   // Method to delete an employ
-  public boolean deleteEmploy(String name) throws SQLException {
-    return employDAO.deleteEmploy(name);
+  public static boolean deleteEmploy(int id) throws SQLException{
+    return  employDAO.deleteEmploy(id);
   }
 }

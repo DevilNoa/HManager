@@ -18,7 +18,7 @@ public class BuildingResource {
   }
 
   // Create a building endpoint
-  // todo: doesn't create a building in the database
+
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   public Response addBuilding(Building newBuilding) {

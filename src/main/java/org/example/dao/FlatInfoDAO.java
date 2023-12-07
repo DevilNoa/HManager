@@ -16,6 +16,7 @@ public class FlatInfoDAO {
   }
 
   // Method to create a flat info
+//todo :fix this or make it again
   public void createFlatInfo(FlatInfo flatInfo) throws SQLException {
     try {
       String sql =
@@ -116,7 +117,8 @@ public class FlatInfoDAO {
   }
 
   // Method to update a flat info
-  public FlatInfo updateFlatInfo(String buildingName, int flatNumber, FlatInfo flatInfo) throws SQLException {
+  public FlatInfo updateFlatInfo(String buildingName, int flatNumber, FlatInfo flatInfo)
+      throws SQLException {
     try {
       String sql =
           "UPDATE flat_info SET flat_floor = ?, flat_elevator = ?, flat_sqft = ?, flat_people = ?, flat_kids = ?, flat_pets = ?, flat_pets_elevator = ? "

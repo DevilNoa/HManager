@@ -16,17 +16,16 @@ public class BuildingDAO {
   }
 
   public void createBuilding(
-      String name,
-      String companyName,
-      String address,
-      int floors,
-      int flats,
-      float squareCommonPart)
-      throws SQLException {
+          String name,
+          String companyName,
+          String address,
+          int floors,
+          int flats,
+          float squareCommonPart) throws SQLException {
     try {
       String sql =
-          "INSERT INTO building (building_name, company_name, building_address, building_floors, building_flats, building_square_common_part) "
-              + "VALUES (?, ?, ?, ?, ?, ?)";
+              "INSERT INTO building (building_name, company_name, building_address, building_floors, building_flats, building_square_common_part) "
+                      + "VALUES (?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
       statement.setString(1, name);
       statement.setString(2, companyName);
@@ -34,9 +33,11 @@ public class BuildingDAO {
       statement.setInt(4, floors);
       statement.setInt(5, flats);
       statement.setFloat(6, squareCommonPart);
-      statement.executeUpdate(); // Execute the query
+      statement.executeUpdate();
     } catch (SQLException e) {
-      throw new SQLException("Error in creating building", e);
+      throw new SQLException("Error in creating building", e.getMessage(),e);
+//      System.out.println("Error in creating building: " + e.getMessage());
+//      e.printStackTrace();
     }
   }
 
@@ -61,7 +62,8 @@ public class BuildingDAO {
         return null;
       }
     } catch (SQLException e) {
-      throw new SQLException("Error in getting building", e);
+      throw new SQLException("Error in getting building",e.getMessage());
+//      e.printStackTrace();
     }
   }
 
@@ -97,8 +99,8 @@ public class BuildingDAO {
   public void updateBuilding(Building building) throws SQLException {
     try {
       String sql =
-          "UPDATE building SET company_name = ?, building_address = ?, building_floors = ?, "
-              + "building_flats = ?, building_square_common_part = ? WHERE building_name = ?";
+              "UPDATE building SET company_name = ?, building_address = ?, building_floors = ?, "
+                      + "building_flats = ?, building_square_common_part = ? WHERE building_name = ?";
       PreparedStatement statement = connection.prepareStatement(sql);
       statement.setString(1, building.getCompanyName());
       statement.setString(2, building.getBuildingAddress());

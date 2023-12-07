@@ -19,30 +19,32 @@ public class EmployDAO {
   public void createEmploy(Employ employ) throws SQLException {
     try {
       String sql =
-          "INSERT INTO employ (employ_name, company_name, building_address) VALUES (?, ?, ?)";
+          "INSERT INTO employ (employ_id,employ_name, company_name, building_address) VALUES (?,?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
-      statement.setString(1, employ.getName());
-      statement.setString(2, employ.getCompanyName());
-      statement.setString(3, employ.getBuildingAddress());
+      statement.setInt(1, employ.getId());
+      statement.setString(2, employ.getName());
+      statement.setString(3, employ.getCompanyName());
+      statement.setString(4, employ.getBuildingAddress());
       statement.executeUpdate(); // Execute the query
     } catch (SQLException e) {
       throw new SQLException("Error in creating employ", e);
     }
   }
 
-  // Method to get an employ by name
-  public Employ getEmployByName(String name) throws SQLException {
+  // Method to get an employ by id
+  public Employ getEmployByID(int id) throws SQLException {
     try {
-      String sql = "SELECT * FROM employ WHERE employ_name = ?";
+      String sql = "SELECT * FROM employ WHERE employ_id = ?";
       PreparedStatement statement = connection.prepareStatement(sql);
-      statement.setString(1, name);
+      statement.setInt(1, id);
 
       ResultSet resultSet = statement.executeQuery();
 
       if (resultSet.next()) {
-        int id = resultSet.getInt("employ_id");
+        id = resultSet.getInt("employ_id");
         String companyName = resultSet.getString("company_name");
         String buildingAddress = resultSet.getString("building_address");
+        String name = resultSet.getString("employ_name");
 
         return new Employ(id, name, companyName, buildingAddress);
       } else {
@@ -78,15 +80,15 @@ public class EmployDAO {
     return employs;
   }
 
-  public Employ updateEmploy(String name, Employ updatedEmploy) throws SQLException {
+  public Employ updateEmploy(int id, Employ updatedEmploy) throws SQLException {
     try {
       String sql =
-          "UPDATE employ SET employ_name = ?, company_name = ?, building_address = ? WHERE employ_name = ?";
+          "UPDATE employ SET employ_name = ?, company_name = ?, building_address = ? WHERE employ_id = ?";
       PreparedStatement statement = connection.prepareStatement(sql);
       statement.setString(1, updatedEmploy.getName());
       statement.setString(2, updatedEmploy.getCompanyName());
       statement.setString(3, updatedEmploy.getBuildingAddress());
-      statement.setString(4, name);
+      statement.setInt(4, id);
       statement.executeUpdate(); // Execute the query
       return updatedEmploy; // Return the updated employ
     } catch (SQLException e) {
@@ -95,11 +97,11 @@ public class EmployDAO {
   }
 
   // Method to delete an employ by name
-  public boolean deleteEmploy(String name) throws SQLException {
+  public boolean deleteEmploy(int id) throws SQLException {
     try {
-      String sql = "DELETE FROM employ WHERE employ_name = ?";
+      String sql = "DELETE FROM employ WHERE employ_id = ?";
       PreparedStatement statement = connection.prepareStatement(sql);
-      statement.setString(1, name);
+      statement.setInt(1, id);
       int rowsDeleted = statement.executeUpdate();
       return rowsDeleted > 0;
     } catch (SQLException e) {
