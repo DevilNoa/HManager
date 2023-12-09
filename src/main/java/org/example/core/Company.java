@@ -31,7 +31,4 @@ public class Company {
     }
 
 
-    public void setEarnings(double earnings) {
-        this.earnings = earnings;
-    }
 }

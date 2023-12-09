@@ -32,47 +32,24 @@ public class Building {
 
   public Building() {}
 
-  public void setBuildingName(String buildingName) {
-    this.buildingName = buildingName;
-  }
-
   public String getCompanyName() {
     return companyName;
-  }
-
-  public void setCompanyName(String companyName) {
-    this.companyName = companyName;
   }
 
   public String getBuildingAddress() {
     return buildingAddress;
   }
 
-  public void setBuildingAddress(String buildingAddress) {
-    this.buildingAddress = buildingAddress;
-  }
-
   public int getBuildingFloors() {
     return buildingFloors;
-  }
-
-  public void setBuildingFloors(int buildingFloors) {
-    this.buildingFloors = buildingFloors;
   }
 
   public int getBuildingFlats() {
     return buildingFlats;
   }
 
-  public void setBuildingFlats(int buildingFlats) {
-    this.buildingFlats = buildingFlats;
-  }
-
   public float getBuildingSqft() {
     return buildingSqft;
   }
 
-  public void setBuildingSqft(float buildingSqft) {
-    this.buildingSqft = buildingSqft;
-  }
 }

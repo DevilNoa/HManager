@@ -5,7 +5,7 @@ import io.dropwizard.core.setup.Environment;
 import org.example.dao.BuildingDAO;
 import org.example.dao.CompanyDAO;
 import org.example.dao.EmployDAO;
-import org.example.dao.FlatInfoDAO;
+import org.example.dao.FlatDAO;
 import org.example.resources.BuildingResource;
 import org.example.resources.CompanyResource;
 import org.example.resources.EmployResource;
@@ -45,7 +45,7 @@ public class HManagerApplication extends Application<HManagerConfiguration> {
     environment.jersey().register(new EmployResource(employServices));
 
     // FlatInfo endpoint
-    final FlatInfoDAO flatInfoDAO = new FlatInfoDAO(configuration.getConnection());
+    final FlatDAO flatInfoDAO = new FlatDAO(configuration.getConnection());
     final FlatInfoServices flatInfoServices = new FlatInfoServices(flatInfoDAO);
     environment.jersey().register(new FlatInfoResource(flatInfoServices));
 

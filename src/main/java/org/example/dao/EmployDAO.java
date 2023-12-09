@@ -57,7 +57,7 @@ public class EmployDAO {
 
   // Method to get all employs
   public List<Employ> getAllEmploys() throws SQLException {
-    List<Employ> employs = new ArrayList<>(); // Create a list to hold the employs
+    List<Employ> employs = new ArrayList<>();
 
     try {
       String sql = "SELECT * FROM employ";
@@ -89,8 +89,8 @@ public class EmployDAO {
       statement.setString(2, updatedEmploy.getCompanyName());
       statement.setString(3, updatedEmploy.getBuildingAddress());
       statement.setInt(4, id);
-      statement.executeUpdate(); // Execute the query
-      return updatedEmploy; // Return the updated employ
+      statement.executeUpdate();
+      return updatedEmploy;
     } catch (SQLException e) {
       throw new SQLException("Error in updating employ", e);
     }

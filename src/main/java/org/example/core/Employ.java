@@ -37,15 +37,8 @@ public class Employ {
         return companyName;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
     public String getBuildingAddress() {
         return buildingAddress;
     }
 
-    public void setBuildingAddress(String buildingAddress) {
-        this.buildingAddress = buildingAddress;
-    }
 }

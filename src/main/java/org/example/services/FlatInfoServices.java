@@ -1,41 +1,45 @@
 package org.example.services;
 
+
 import org.example.core.FlatInfo;
-import org.example.dao.FlatInfoDAO;
+import org.example.dao.FlatDAO;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class FlatInfoServices {
-  FlatInfoDAO flatInfoDAO;
 
-  public FlatInfoServices(FlatInfoDAO flatInfoDAO) {
-    this.flatInfoDAO = flatInfoDAO;
-  }
+    static FlatDAO flatDAO;
 
-  // Method to create a flat info
-  public void addFlatInfo(FlatInfo newFlatInfo) throws SQLException {
-    flatInfoDAO.createFlatInfo(newFlatInfo);
-  }
+    public FlatInfoServices(FlatDAO flatDAO) {
+        FlatInfoServices.flatDAO = flatDAO;
+    }
 
-  // Method to get a flat info by building name and flat number
-  public FlatInfo getFlatInfo(String buildingName, int flatNumber) throws SQLException {
-    return flatInfoDAO.getFlatInfo(buildingName, flatNumber);
-  }
 
-  // Method to get all flats info for a building
-  public List<FlatInfo> getAllFlatInfoForBuilding(String buildingName) throws SQLException {
-    return flatInfoDAO.getAllFlatInfoForBuilding(buildingName);
-  }
+    //Get all Flats
+    public List<FlatInfo> getAllFlats() throws SQLException {
+        return flatDAO.getAllFlats();
+    }
+    //Get all Flats by building
+    public List<FlatInfo> getAllFlatsByBuilding(String buildingName) throws SQLException {
+        return flatDAO.getAllFlatsByBuilding(buildingName);
+    }
+    //Get all Flats by building and apartment number
+    public List<FlatInfo> getAllFlatsByBuildingAndFlatNum(String buildingName, int apartmentNumber) throws SQLException {
+        return flatDAO.getAllFlatsByBuildingAndFlatNum(buildingName, apartmentNumber);
+    }
+    //Create a new Flat
+    public void addFlat(FlatInfo newFlat) throws SQLException {
+         flatDAO.createFlat(newFlat);
+    }
+    //Update a Flat
+    public FlatInfo updateFlat(String buildingName, int flatNumber, FlatInfo updatedFlat) throws SQLException {
+        return flatDAO.updateFlat(buildingName, flatNumber, updatedFlat);
+    }
 
-  // Method to update a flat info
-  public FlatInfo updateFlatInfo(String buildingName, int flatNumber, FlatInfo newFlatInfo)
-      throws SQLException {
-    return flatInfoDAO.updateFlatInfo(buildingName, flatNumber, newFlatInfo);
-  }
 
-  // Method to delete a flat info
-  public boolean deleteFlatInfo(String buildingName, int flatNumber) throws SQLException {
-    return flatInfoDAO.deleteFlatInfo(buildingName, flatNumber);
-  }
+    //Delete a Flat
+    public static boolean deleteFlat(String buildingName, int flatNumber) throws SQLException{
+        return  flatDAO.deleteFlat(buildingName, flatNumber);
+    }
 }

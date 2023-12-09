@@ -9,7 +9,7 @@ public class EmployServices {
   static EmployDAO employDAO;
 
   public EmployServices(EmployDAO employDAO) {
-    this.employDAO = employDAO;
+    EmployServices.employDAO = employDAO;
   }
 
   // Method to create an employ
