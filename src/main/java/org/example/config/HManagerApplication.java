@@ -2,18 +2,9 @@ package org.example.config;
 
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Environment;
-import org.example.dao.BuildingDAO;
-import org.example.dao.CompanyDAO;
-import org.example.dao.EmployDAO;
-import org.example.dao.FlatDAO;
-import org.example.resources.BuildingResource;
-import org.example.resources.CompanyResource;
-import org.example.resources.EmployResource;
-import org.example.resources.FlatInfoResource;
-import org.example.services.BuildingServices;
-import org.example.services.CompanyServices;
-import org.example.services.EmployServices;
-import org.example.services.FlatInfoServices;
+import org.example.dao.*;
+import org.example.resources.*;
+import org.example.services.*;
 
 public class HManagerApplication extends Application<HManagerConfiguration> {
 
@@ -49,5 +40,9 @@ public class HManagerApplication extends Application<HManagerConfiguration> {
     final FlatInfoServices flatInfoServices = new FlatInfoServices(flatInfoDAO);
     environment.jersey().register(new FlatInfoResource(flatInfoServices));
 
+    // Resident endpoint
+    final ResidentsDAO residentsDAO = new ResidentsDAO(configuration.getConnection());
+    final ResidentsServices residentsServices = new ResidentsServices(residentsDAO);
+    environment.jersey().register(new ResidentsResource(residentsServices));
   }
 }

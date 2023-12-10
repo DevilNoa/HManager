@@ -19,7 +19,7 @@ public class EmployResource {
 
   // Create a employ endpoint
   @POST
-  @Consumes(MediaType.APPLICATION_JSON)
+  @Path("/test")
   public Response addEmploy(Employ newEmploy) {
     try {
       employServices.addEmploy(newEmploy);
@@ -60,7 +60,7 @@ public class EmployResource {
   @PUT
   @Path("/{id}")
   @Consumes(MediaType.APPLICATION_JSON)
-  public Response updateEmploy(@PathParam("id") Integer id  , Employ newEmploy) {
+  public Response updateEmploy(@PathParam("id") Integer id, Employ newEmploy) {
     try {
       Employ employ = employServices.updateEmploy(id, newEmploy);
       if (employ != null) {
@@ -84,6 +84,4 @@ public class EmployResource {
       return Response.status(Response.Status.NOT_FOUND).build();
     }
   }
-
-
 }

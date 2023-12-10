@@ -16,16 +16,17 @@ public class BuildingDAO {
   }
 
   public void createBuilding(
-          String name,
-          String companyName,
-          String address,
-          int floors,
-          int flats,
-          float squareCommonPart) throws SQLException {
+      String name,
+      String companyName,
+      String address,
+      int floors,
+      int flats,
+      float squareCommonPart)
+      throws SQLException {
     try {
       String sql =
-              "INSERT INTO building (building_name, company_name, building_address, building_floors, building_flats, building_square_common_part) "
-                      + "VALUES (?, ?, ?, ?, ?, ?)";
+          "INSERT INTO building (building_name, company_name, building_address, building_floors, building_flats, building_square_common_part) "
+              + "VALUES (?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
       statement.setString(1, name);
       statement.setString(2, companyName);
@@ -35,13 +36,13 @@ public class BuildingDAO {
       statement.setFloat(6, squareCommonPart);
       statement.executeUpdate();
     } catch (SQLException e) {
-      throw new SQLException("Error in creating building", e.getMessage(),e);
-//      System.out.println("Error in creating building: " + e.getMessage());
-//      e.printStackTrace();
+      throw new SQLException("Error in creating building", e.getMessage(), e);
+      //      System.out.println("Error in creating building: " + e.getMessage());
+      //      e.printStackTrace();
     }
   }
 
-  // Read a building by name (get a row from the 'building' table)
+  // Get a building by name
   public Building getBuildingByName(String name) throws SQLException {
     try {
       String sql = "SELECT * FROM building WHERE building_name = ?";
@@ -62,8 +63,8 @@ public class BuildingDAO {
         return null;
       }
     } catch (SQLException e) {
-      throw new SQLException("Error in getting building",e.getMessage());
-//      e.printStackTrace();
+      throw new SQLException("Error in getting building", e.getMessage());
+      //      System.out.println("Error in getting building: " + e.getMessage());
     }
   }
 
@@ -95,30 +96,29 @@ public class BuildingDAO {
     return buildings;
   }
 
-  // Update a building (update a row in the 'building' table)
-  public void updateBuilding(Building building) throws SQLException {
+  // Update a building
+  public Building updateBuilding(String name, Building newBuilding) throws SQLException {
     try {
       String sql =
-              "UPDATE building SET company_name = ?, building_address = ?, building_floors = ?, "
-                      + "building_flats = ?, building_square_common_part = ? WHERE building_name = ?";
+          "UPDATE building SET building_name = ?, company_name = ?, building_address = ?, building_floors = ?, "
+              + "building_flats = ?, building_square_common_part = ? WHERE building_name = ?";
       PreparedStatement statement = connection.prepareStatement(sql);
-      statement.setString(1, building.getCompanyName());
-      statement.setString(2, building.getBuildingAddress());
-      statement.setInt(3, building.getBuildingFloors());
-      statement.setInt(4, building.getBuildingFlats());
-      statement.setFloat(5, building.getBuildingSqft());
-      statement.setString(6, building.getBuildingName());
+      statement.setString(1, newBuilding.getBuildingName());
+      statement.setString(2, newBuilding.getCompanyName());
+      statement.setString(3, newBuilding.getBuildingAddress());
+      statement.setInt(4, newBuilding.getBuildingFloors());
+      statement.setInt(5, newBuilding.getBuildingFlats());
+      statement.setFloat(6, newBuilding.getBuildingSqft());
+      statement.setString(7, name); // Use the original building name for WHERE clause
 
       int affectedRows = statement.executeUpdate();
 
       if (affectedRows > 0) {
-        new Building(
-            building.getBuildingName(),
-            building.getCompanyName(),
-            building.getBuildingAddress(),
-            building.getBuildingFloors(),
-            building.getBuildingFlats(),
-            building.getBuildingSqft());
+        System.out.println("Building updated successfully!");
+        return newBuilding;
+      } else {
+        System.out.println("Building not found for update.");
+        return null;
       }
     } catch (SQLException e) {
       throw new SQLException("Error in updating building", e);

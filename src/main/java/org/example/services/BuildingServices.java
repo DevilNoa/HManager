@@ -36,8 +36,7 @@ public class BuildingServices {
 
   // Method to update a building
   public Building updateBuilding(String name, Building newBuilding) throws SQLException {
-    buildingDAO.updateBuilding(newBuilding);
-    return newBuilding;
+    return buildingDAO.updateBuilding(name, newBuilding);
   }
 
   // Method to delete a building

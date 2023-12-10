@@ -31,8 +31,9 @@ public class BuildingResource {
   }
 
   // Read a building by name endpoint
+  // conflict when building name = test
   @GET
-  @Path("/{name}")
+  @Path("/name/{name}")
   public Response getBuildingByName(@PathParam("name") String name) {
     try {
       Building building = buildingServices.getBuildingByName(name);
@@ -64,9 +65,10 @@ public class BuildingResource {
   @Consumes(MediaType.APPLICATION_JSON)
   public Response updateBuilding(@PathParam("name") String name, Building newBuilding) {
     try {
-      Building building = buildingServices.updateBuilding(name, newBuilding);
-      if (building != null) {
-        return Response.ok(building).build();
+      Building updatedBuilding = buildingServices.updateBuilding(name, newBuilding);
+
+      if (updatedBuilding != null) {
+        return Response.ok(updatedBuilding).build();
       } else {
         return Response.status(Response.Status.NOT_FOUND).build();
       }

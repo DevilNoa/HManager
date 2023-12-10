@@ -6,17 +6,18 @@ House Manager is a project for the following subject, CSCB525. The project is fo
 ## Functional requirements of the applicationS
 
 - [X]  Company CRUD operations
-- [ ]  Workers CRUD operations
-- [ ]  Building CRUD operations
-- [ ]  Occupancy CRUD operations
-  - [ ]  Set a condominium fee
-  - [ ]  Paid monthly condominium fee
+- [ ]  Employ CRUD operations/90% done
+- [x]  Building CRUD operations
+- [X]  Apartment CRUD operations
+   - [ ]  Set a condominium fee
+   - [ ]  Paid monthly condominium fee
+- [ ]  Resident CRUD operations/90% done
 
 Filter and sort the following data for:
 
 - [ ]  Companies: by revenue (fees collected)
-- [ ]  Company workers (by name/ by  buildings)
-- [ ]  Building occupancs (Alfabetecly/ by age)
+- [ ]  Company workers (by name/ by buildings)
+- [ ]  Building occupants (Alphabetically/ by age)
 
 Summary and detailed inquiries (total number and list) for:
 
@@ -27,6 +28,6 @@ Summary and detailed inquiries (total number and list) for:
 - [ ]  Amounts paid (for each company, for each building, for each employee)
 - [ ]  Print the data for the fees on a .txt file with the following info: company, employee, building, flat , amount, date of payment.
 
-## Authors
+## Author
 
 - [@DevilNoa](https://github.com/DevilNoa)
