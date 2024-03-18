@@ -166,16 +166,15 @@ public class FlatDAO {
     }
   }
 
-  //todo: Find why this method is not updating "flatNumber" in the database
+  // todo: Find why this method is not updating "flatNumber" in the database
   // Update a Flat
-  public FlatInfo updateFlat(String buildingName, int currentFlatNumber, FlatInfo updatedFlat) throws SQLException {
+  public FlatInfo updateFlat(String buildingName, int currentFlatNumber, FlatInfo updatedFlat)
+      throws SQLException {
     try {
       String sql =
-              "UPDATE flat_info SET flat_floor=?, flat_elevator=?, flat_sqm=?, flat_people=?, flat_kids=?, flat_pet=?, flat_pet_elevator=?, flat_number=? "
-                      + "WHERE building_name=? AND flat_number=?";
-
+          "UPDATE flat_info SET flat_floor=?, flat_elevator=?, flat_sqm=?, flat_people=?, flat_kids=?, flat_pet=?, flat_pet_elevator=? "
+              + "WHERE building_name=? AND flat_number=?";
       PreparedStatement statement = connection.prepareStatement(sql);
-
       statement.setInt(1, updatedFlat.getFlatFloor());
       statement.setBoolean(2, updatedFlat.isFlatElevator());
       statement.setFloat(3, updatedFlat.getFlatSqft());
@@ -183,23 +182,28 @@ public class FlatDAO {
       statement.setInt(5, updatedFlat.getFlatKids());
       statement.setBoolean(6, updatedFlat.isFlatPets());
       statement.setBoolean(7, updatedFlat.isFlatPetsElevator());
-      statement.setInt(8, updatedFlat.getFlatNumber()); // Set the new flat number
-      statement.setString(9, buildingName);
-      statement.setInt(10, currentFlatNumber); // Use the current flat number for WHERE condition
+      statement.setString(8, buildingName);
+      statement.setInt(9, currentFlatNumber);
+      statement.executeUpdate();
 
-      int rowsUpdated = statement.executeUpdate();
+      String sql2 = "UPDATE flat_info SET flat_number=? WHERE building_name=? AND flat_number=?";
+      PreparedStatement statement2 = connection.prepareStatement(sql2);
+      statement2.setInt(1, updatedFlat.getFlatNumber()); // Set the new flat number
+      statement2.setString(2, buildingName);
+      statement2.setInt(3, currentFlatNumber);
+      statement2.executeUpdate();
 
-      if (rowsUpdated > 0) {
-        // Fetch the updated flat and return it
+      if (statement2.executeUpdate() > 0) {
         return updatedFlatHelper(buildingName, updatedFlat.getFlatNumber());
       } else {
-        return null; // No rows were updated, flat not found
+        return null;
       }
     } catch (SQLException e) {
       e.printStackTrace();
       throw new SQLException("Error in updating flat", e);
     }
   }
+
   public FlatInfo updatedFlatHelper(String buildingName, int flatNumber) throws SQLException {
     String sql = "SELECT * FROM flat_info WHERE building_name = ? AND flat_number = ?";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {

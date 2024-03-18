@@ -99,6 +99,16 @@ public class BuildingDAO {
   // Update a building
   public Building updateBuilding(String name, Building newBuilding) throws SQLException {
     try {
+      String checkSql = "SELECT * FROM building WHERE building_name = ?";
+      PreparedStatement checkStatement = connection.prepareStatement(checkSql);
+      checkStatement.setString(1, name);
+      ResultSet checkResultSet = checkStatement.executeQuery();
+
+      if (!checkResultSet.next()) {
+        System.out.println("Building not found for update.");
+        return null;
+      }
+
       String sql =
           "UPDATE building SET building_name = ?, company_name = ?, building_address = ?, building_floors = ?, "
               + "building_flats = ?, building_square_common_part = ? WHERE building_name = ?";
@@ -109,7 +119,7 @@ public class BuildingDAO {
       statement.setInt(4, newBuilding.getBuildingFloors());
       statement.setInt(5, newBuilding.getBuildingFlats());
       statement.setFloat(6, newBuilding.getBuildingSqft());
-      statement.setString(7, name); // Use the original building name for WHERE clause
+      statement.setString(7, name);
 
       int affectedRows = statement.executeUpdate();
 

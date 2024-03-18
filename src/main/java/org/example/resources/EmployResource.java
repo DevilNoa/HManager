@@ -19,12 +19,12 @@ public class EmployResource {
 
   // Create a employ endpoint
   @POST
-  @Path("/test")
   public Response addEmploy(Employ newEmploy) {
     try {
       employServices.addEmploy(newEmploy);
       return Response.status(Response.Status.CREATED).build();
     } catch (SQLException e) {
+      e.printStackTrace();
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
     }
   }

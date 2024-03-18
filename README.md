@@ -6,7 +6,7 @@ House Manager is a project for the following subject, CSCB525. The project is fo
 ## Functional requirements of the applicationS
 
 - [X]  Company CRUD operations
-- [ ]  Employ CRUD operations/90% done
+- [X]  Employ CRUD operations
 - [x]  Building CRUD operations
 - [X]  Apartment CRUD operations
    - [ ]  Set a condominium fee

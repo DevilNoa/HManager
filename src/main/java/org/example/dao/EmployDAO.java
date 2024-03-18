@@ -19,12 +19,11 @@ public class EmployDAO {
   public void createEmploy(Employ employ) throws SQLException {
     try {
       String sql =
-          "INSERT INTO employ (employ_id,employ_name, company_name, building_address) VALUES (?,?, ?, ?)";
+          "INSERT INTO employ (employ_name, company_name, building_address) VALUES (?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
-      statement.setInt(1, employ.getId());
-      statement.setString(2, employ.getName());
-      statement.setString(3, employ.getCompanyName());
-      statement.setString(4, employ.getBuildingAddress());
+      statement.setString(1, employ.getName());
+      statement.setString(2, employ.getCompanyName());
+      statement.setString(3, employ.getBuildingAddress());
       statement.executeUpdate(); // Execute the query
     } catch (SQLException e) {
       throw new SQLException("Error in creating employ", e);
