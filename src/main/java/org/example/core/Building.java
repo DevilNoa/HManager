@@ -51,5 +51,4 @@ public class Building {
   public float getBuildingSqft() {
     return buildingSqft;
   }
-
 }

@@ -1,6 +1,6 @@
-INFO  [2023-10-24 08:58:09,147] io.dropwizard.core.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
-INFO  [2023-10-24 08:58:09,149] io.dropwizard.core.server.DefaultServerFactory: Registering admin handler with root path prefix: /
-INFO  [2023-10-24 08:58:09,188] io.dropwizard.core.server.ServerFactory: Starting HManager
+INFO  [2024-03-18 08:48:38,861] io.dropwizard.core.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2024-03-18 08:48:38,865] io.dropwizard.core.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2024-03-18 08:48:38,945] io.dropwizard.core.server.ServerFactory: Starting HManager
  ===================================================================================================================================================
       :::    :::  ::::::::  :::    :::  ::::::::  ::::::::::         :::   :::       :::     ::::    :::     :::      ::::::::  :::::::::: :::::::::
      :+:    :+: :+:    :+: :+:    :+: :+:    :+: :+:               :+:+: :+:+:    :+: :+:   :+:+:   :+:   :+: :+:   :+:    :+: :+:        :+:    :+: 
@@ -10,121 +10,15 @@ INFO  [2023-10-24 08:58:09,188] io.dropwizard.core.server.ServerFactory: Startin
  #+#    #+# #+#    #+# #+#    #+# #+#    #+# #+#              #+#       #+# #+#     #+# #+#   #+#+# #+#     #+# #+#    #+# #+#        #+#    #+#     
 ###    ###  ########   ########   ########  ##########       ###       ### ###     ### ###    #### ###     ###  ########  ########## ###    ###
 ===================================================================================================================================================
-INFO  [2023-10-24 08:58:09,267] org.eclipse.jetty.setuid.SetUIDListener: Opened application@3db972d2{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-INFO  [2023-10-24 08:58:09,267] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@1debc91c{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
-INFO  [2023-10-24 08:58:09,269] org.eclipse.jetty.server.Server: jetty-11.0.15; built: 2023-04-11T18:37:53.775Z; git: 5bc5e562c8d05c5862505aebe5cf83a61bdbcb96; jvm 21.0.1+12-29
-INFO  [2023-10-24 08:58:09,643] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+INFO  [2024-03-18 08:48:39,067] org.eclipse.jetty.setuid.SetUIDListener: Opened application@278667fd{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+INFO  [2024-03-18 08:48:39,067] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@684b31de{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+INFO  [2024-03-18 08:48:39,071] org.eclipse.jetty.server.Server: jetty-11.0.15; built: 2023-04-11T18:37:53.775Z; git: 5bc5e562c8d05c5862505aebe5cf83a61bdbcb96; jvm 21.0.1+12-29
+INFO  [2024-03-18 08:48:39,598] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
 
     GET     /building (org.example.resources.BuildingResource)
     POST    /building (org.example.resources.BuildingResource)
+    GET     /building/name/{name} (org.example.resources.BuildingResource)
     DELETE  /building/{name} (org.example.resources.BuildingResource)
-    GET     /building/{name} (org.example.resources.BuildingResource)
-    PUT     /building/{name} (org.example.resources.BuildingResource)
-    GET     /company (org.example.resources.CompanyResource)
-    POST    /company (org.example.resources.CompanyResource)
-    DELETE  /company/{name} (org.example.resources.CompanyResource)
-    GET     /company/{name} (org.example.resources.CompanyResource)
-    PUT     /company/{name} (org.example.resources.CompanyResource)
-
-INFO  [2023-10-24 08:58:09,645] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@348137e8{/,null,AVAILABLE}
-INFO  [2023-10-24 08:58:09,648] io.dropwizard.core.setup.AdminEnvironment: tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
-
-WARN  [2023-10-24 08:58:09,648] io.dropwizard.core.setup.AdminEnvironment: 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
-!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
-!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
-!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-INFO  [2023-10-24 08:58:09,649] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@3946075{/,null,AVAILABLE}
-INFO  [2023-10-24 08:58:09,673] org.eclipse.jetty.server.AbstractConnector: Started application@3db972d2{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-INFO  [2023-10-24 08:58:09,678] org.eclipse.jetty.server.AbstractConnector: Started admin@1debc91c{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
-INFO  [2023-10-24 08:58:09,679] org.eclipse.jetty.server.Server: Started Server@1292071f{STARTING}[11.0.15,sto=30000] @2186ms
-INFO  [2023-10-24 08:59:43,033] org.eclipse.jetty.server.Server: Stopped Server@1292071f{STOPPING}[11.0.15,sto=30000]
-INFO  [2023-10-24 08:59:43,033] org.eclipse.jetty.server.Server: Shutdown Server@1292071f{STOPPING}[11.0.15,sto=30000]
-INFO  [2023-10-24 08:59:43,037] org.eclipse.jetty.server.AbstractConnector: Stopped application@3db972d2{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-INFO  [2023-10-24 08:59:43,038] org.eclipse.jetty.server.AbstractConnector: Stopped admin@1debc91c{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
-INFO  [2023-10-24 08:59:43,039] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@3946075{/,null,STOPPED}
-INFO  [2023-10-24 08:59:43,043] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@348137e8{/,null,STOPPED}
-INFO  [2023-10-24 09:07:53,501] io.dropwizard.core.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
-INFO  [2023-10-24 09:07:53,503] io.dropwizard.core.server.DefaultServerFactory: Registering admin handler with root path prefix: /
-INFO  [2023-10-24 09:07:53,557] io.dropwizard.core.server.ServerFactory: Starting HManager
- ===================================================================================================================================================
-      :::    :::  ::::::::  :::    :::  ::::::::  ::::::::::         :::   :::       :::     ::::    :::     :::      ::::::::  :::::::::: :::::::::
-     :+:    :+: :+:    :+: :+:    :+: :+:    :+: :+:               :+:+: :+:+:    :+: :+:   :+:+:   :+:   :+: :+:   :+:    :+: :+:        :+:    :+: 
-    +:+    +:+ +:+    +:+ +:+    +:+ +:+        +:+              +:+ +:+:+ +:+  +:+   +:+  :+:+:+  +:+  +:+   +:+  +:+        +:+        +:+    +:+  
-   +#++:++#++ +#+    +:+ +#+    +:+ +#++:++#++ +#++:++#         +#+  +:+  +#+ +#++:++#++: +#+ +:+ +#+ +#++:++#++: :#:        +#++:++#   +#++:++#:    
-  +#+    +#+ +#+    +#+ +#+    +#+        +#+ +#+              +#+       +#+ +#+     +#+ +#+  +#+#+# +#+     +#+ +#+   +#+# +#+        +#+    +#+    
- #+#    #+# #+#    #+# #+#    #+# #+#    #+# #+#              #+#       #+# #+#     #+# #+#   #+#+# #+#     #+# #+#    #+# #+#        #+#    #+#     
-###    ###  ########   ########   ########  ##########       ###       ### ###     ### ###    #### ###     ###  ########  ########## ###    ###
-===================================================================================================================================================
-INFO  [2023-10-24 09:07:53,665] org.eclipse.jetty.setuid.SetUIDListener: Opened application@1702830d{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-INFO  [2023-10-24 09:07:53,665] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@6a937336{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
-INFO  [2023-10-24 09:07:53,667] org.eclipse.jetty.server.Server: jetty-11.0.15; built: 2023-04-11T18:37:53.775Z; git: 5bc5e562c8d05c5862505aebe5cf83a61bdbcb96; jvm 21.0.1+12-29
-INFO  [2023-10-24 09:07:54,079] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
-
-    GET     /building (org.example.resources.BuildingResource)
-    POST    /building (org.example.resources.BuildingResource)
-    DELETE  /building/{name} (org.example.resources.BuildingResource)
-    GET     /building/{name} (org.example.resources.BuildingResource)
-    PUT     /building/{name} (org.example.resources.BuildingResource)
-    GET     /company (org.example.resources.CompanyResource)
-    POST    /company (org.example.resources.CompanyResource)
-    DELETE  /company/{name} (org.example.resources.CompanyResource)
-    GET     /company/{name} (org.example.resources.CompanyResource)
-    PUT     /company/{name} (org.example.resources.CompanyResource)
-
-INFO  [2023-10-24 09:07:54,082] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@5e593b08{/,null,AVAILABLE}
-INFO  [2023-10-24 09:07:54,084] io.dropwizard.core.setup.AdminEnvironment: tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
-
-WARN  [2023-10-24 09:07:54,086] io.dropwizard.core.setup.AdminEnvironment: 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
-!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
-!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
-!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-INFO  [2023-10-24 09:07:54,086] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@3dc40ab9{/,null,AVAILABLE}
-INFO  [2023-10-24 09:07:54,104] org.eclipse.jetty.server.AbstractConnector: Started application@1702830d{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-INFO  [2023-10-24 09:07:54,108] org.eclipse.jetty.server.AbstractConnector: Started admin@6a937336{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
-INFO  [2023-10-24 09:07:54,110] org.eclipse.jetty.server.Server: Started Server@5633ed82{STARTING}[11.0.15,sto=30000] @2187ms
-INFO  [2023-10-24 09:15:15,092] org.eclipse.jetty.server.Server: Stopped Server@5633ed82{STOPPING}[11.0.15,sto=30000]
-INFO  [2023-10-24 09:15:15,092] org.eclipse.jetty.server.Server: Shutdown Server@5633ed82{STOPPING}[11.0.15,sto=30000]
-INFO  [2023-10-24 09:15:15,095] org.eclipse.jetty.server.AbstractConnector: Stopped application@1702830d{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-INFO  [2023-10-24 09:15:15,096] org.eclipse.jetty.server.AbstractConnector: Stopped admin@6a937336{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
-INFO  [2023-10-24 09:15:15,098] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@3dc40ab9{/,null,STOPPED}
-INFO  [2023-10-24 09:15:15,105] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@5e593b08{/,null,STOPPED}
-INFO  [2023-10-28 10:37:14,388] io.dropwizard.core.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
-INFO  [2023-10-28 10:37:14,390] io.dropwizard.core.server.DefaultServerFactory: Registering admin handler with root path prefix: /
-INFO  [2023-10-28 10:37:14,459] io.dropwizard.core.server.ServerFactory: Starting HManager
- ===================================================================================================================================================
-      :::    :::  ::::::::  :::    :::  ::::::::  ::::::::::         :::   :::       :::     ::::    :::     :::      ::::::::  :::::::::: :::::::::
-     :+:    :+: :+:    :+: :+:    :+: :+:    :+: :+:               :+:+: :+:+:    :+: :+:   :+:+:   :+:   :+: :+:   :+:    :+: :+:        :+:    :+: 
-    +:+    +:+ +:+    +:+ +:+    +:+ +:+        +:+              +:+ +:+:+ +:+  +:+   +:+  :+:+:+  +:+  +:+   +:+  +:+        +:+        +:+    +:+  
-   +#++:++#++ +#+    +:+ +#+    +:+ +#++:++#++ +#++:++#         +#+  +:+  +#+ +#++:++#++: +#+ +:+ +#+ +#++:++#++: :#:        +#++:++#   +#++:++#:    
-  +#+    +#+ +#+    +#+ +#+    +#+        +#+ +#+              +#+       +#+ +#+     +#+ +#+  +#+#+# +#+     +#+ +#+   +#+# +#+        +#+    +#+    
- #+#    #+# #+#    #+# #+#    #+# #+#    #+# #+#              #+#       #+# #+#     #+# #+#   #+#+# #+#     #+# #+#    #+# #+#        #+#    #+#     
-###    ###  ########   ########   ########  ##########       ###       ### ###     ### ###    #### ###     ###  ########  ########## ###    ###
-===================================================================================================================================================
-INFO  [2023-10-28 10:37:14,542] org.eclipse.jetty.setuid.SetUIDListener: Opened application@278667fd{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-INFO  [2023-10-28 10:37:14,542] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@684b31de{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
-INFO  [2023-10-28 10:37:14,544] org.eclipse.jetty.server.Server: jetty-11.0.15; built: 2023-04-11T18:37:53.775Z; git: 5bc5e562c8d05c5862505aebe5cf83a61bdbcb96; jvm 21.0.1+12-29
-INFO  [2023-10-28 10:37:14,937] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
-
-    GET     /building (org.example.resources.BuildingResource)
-    POST    /building (org.example.resources.BuildingResource)
-    DELETE  /building/{name} (org.example.resources.BuildingResource)
-    GET     /building/{name} (org.example.resources.BuildingResource)
     PUT     /building/{name} (org.example.resources.BuildingResource)
     GET     /company (org.example.resources.CompanyResource)
     POST    /company (org.example.resources.CompanyResource)
@@ -133,17 +27,33 @@ INFO  [2023-10-28 10:37:14,937] io.dropwizard.jersey.DropwizardResourceConfig: T
     PUT     /company/{name} (org.example.resources.CompanyResource)
     GET     /employ (org.example.resources.EmployResource)
     POST    /employ (org.example.resources.EmployResource)
-    DELETE  /employ/{name} (org.example.resources.EmployResource)
-    GET     /employ/{name} (org.example.resources.EmployResource)
-    PUT     /employ/{name} (org.example.resources.EmployResource)
+    DELETE  /employ/{id} (org.example.resources.EmployResource)
+    GET     /employ/{id} (org.example.resources.EmployResource)
+    PUT     /employ/{id} (org.example.resources.EmployResource)
+    GET     /flatinfo (org.example.resources.FlatInfoResource)
+    POST    /flatinfo (org.example.resources.FlatInfoResource)
+    GET     /flatinfo/building/{buildingName} (org.example.resources.FlatInfoResource)
+    GET     /flatinfo/building/{buildingName}/apartmentNumber/{apartmentNumber} (org.example.resources.FlatInfoResource)
+    PUT     /flatinfo/building/{buildingName}/apartmentNumber/{apartmentNumber} (org.example.resources.FlatInfoResource)
+    PUT     /flatinfo/update/building/{buildingName}/apartmentNumber/{apartmentNumber} (org.example.resources.FlatInfoResource)
+    DELETE  /flatinfo/{buildingName}/{apartmentNumber} (org.example.resources.FlatInfoResource)
+    GET     /residents (org.example.resources.ResidentsResource)
+    POST    /residents (org.example.resources.ResidentsResource)
+    GET     /residents/building/{building} (org.example.resources.ResidentsResource)
+    GET     /residents/building/{building}/flat/{flat} (org.example.resources.ResidentsResource)
+    GET     /residents/building/{building}/flat/{flat}/name/{name} (org.example.resources.ResidentsResource)
+    DELETE  /residents/delete/{id} (org.example.resources.ResidentsResource)
+    GET     /residents/flat/{flat} (org.example.resources.ResidentsResource)
+    GET     /residents/name/{name} (org.example.resources.ResidentsResource)
+    PUT     /residents/update/{id} (org.example.resources.ResidentsResource)
 
-INFO  [2023-10-28 10:37:14,938] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@4d705112{/,null,AVAILABLE}
-INFO  [2023-10-28 10:37:14,941] io.dropwizard.core.setup.AdminEnvironment: tasks = 
+INFO  [2024-03-18 08:48:39,605] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@7d0100ea{/,null,AVAILABLE}
+INFO  [2024-03-18 08:48:39,609] io.dropwizard.core.setup.AdminEnvironment: tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
 
-WARN  [2023-10-28 10:37:14,941] io.dropwizard.core.setup.AdminEnvironment: 
+WARN  [2024-03-18 08:48:39,609] io.dropwizard.core.setup.AdminEnvironment: 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
@@ -152,13 +62,81 @@ WARN  [2023-10-28 10:37:14,941] io.dropwizard.core.setup.AdminEnvironment:
 !         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-INFO  [2023-10-28 10:37:14,941] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@f2276c9{/,null,AVAILABLE}
-INFO  [2023-10-28 10:37:14,960] org.eclipse.jetty.server.AbstractConnector: Started application@278667fd{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-INFO  [2023-10-28 10:37:14,964] org.eclipse.jetty.server.AbstractConnector: Started admin@684b31de{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
-INFO  [2023-10-28 10:37:14,966] org.eclipse.jetty.server.Server: Started Server@34d52ecd{STARTING}[11.0.15,sto=30000] @2257ms
-INFO  [2023-10-28 10:42:42,510] org.eclipse.jetty.server.Server: Stopped Server@34d52ecd{STOPPING}[11.0.15,sto=30000]
-INFO  [2023-10-28 10:42:42,511] org.eclipse.jetty.server.Server: Shutdown Server@34d52ecd{STOPPING}[11.0.15,sto=30000]
-INFO  [2023-10-28 10:42:42,516] org.eclipse.jetty.server.AbstractConnector: Stopped application@278667fd{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-INFO  [2023-10-28 10:42:42,517] org.eclipse.jetty.server.AbstractConnector: Stopped admin@684b31de{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
-INFO  [2023-10-28 10:42:42,518] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@f2276c9{/,null,STOPPED}
-INFO  [2023-10-28 10:42:42,526] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@4d705112{/,null,STOPPED}
+INFO  [2024-03-18 08:48:39,609] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@40ce9049{/,null,AVAILABLE}
+INFO  [2024-03-18 08:48:39,633] org.eclipse.jetty.server.AbstractConnector: Started application@278667fd{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+INFO  [2024-03-18 08:48:39,638] org.eclipse.jetty.server.AbstractConnector: Started admin@684b31de{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+INFO  [2024-03-18 08:48:39,640] org.eclipse.jetty.server.Server: Started Server@78d6447a{STARTING}[11.0.15,sto=30000] @3040ms
+INFO  [2024-03-18 09:50:19,360] org.eclipse.jetty.server.Server: Stopped Server@78d6447a{STOPPING}[11.0.15,sto=30000]
+INFO  [2024-03-18 09:50:19,361] org.eclipse.jetty.server.Server: Shutdown Server@78d6447a{STOPPING}[11.0.15,sto=30000]
+INFO  [2024-03-18 09:50:19,369] org.eclipse.jetty.server.AbstractConnector: Stopped application@278667fd{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+INFO  [2024-03-18 09:50:19,371] org.eclipse.jetty.server.AbstractConnector: Stopped admin@684b31de{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+INFO  [2024-03-18 09:50:19,373] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@40ce9049{/,null,STOPPED}
+INFO  [2024-03-18 09:50:19,388] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@7d0100ea{/,null,STOPPED}
+INFO  [2024-03-18 09:50:24,507] io.dropwizard.core.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2024-03-18 09:50:24,512] io.dropwizard.core.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2024-03-18 09:50:24,572] io.dropwizard.core.server.ServerFactory: Starting HManager
+ ===================================================================================================================================================
+      :::    :::  ::::::::  :::    :::  ::::::::  ::::::::::         :::   :::       :::     ::::    :::     :::      ::::::::  :::::::::: :::::::::
+     :+:    :+: :+:    :+: :+:    :+: :+:    :+: :+:               :+:+: :+:+:    :+: :+:   :+:+:   :+:   :+: :+:   :+:    :+: :+:        :+:    :+: 
+    +:+    +:+ +:+    +:+ +:+    +:+ +:+        +:+              +:+ +:+:+ +:+  +:+   +:+  :+:+:+  +:+  +:+   +:+  +:+        +:+        +:+    +:+  
+   +#++:++#++ +#+    +:+ +#+    +:+ +#++:++#++ +#++:++#         +#+  +:+  +#+ +#++:++#++: +#+ +:+ +#+ +#++:++#++: :#:        +#++:++#   +#++:++#:    
+  +#+    +#+ +#+    +#+ +#+    +#+        +#+ +#+              +#+       +#+ +#+     +#+ +#+  +#+#+# +#+     +#+ +#+   +#+# +#+        +#+    +#+    
+ #+#    #+# #+#    #+# #+#    #+# #+#    #+# #+#              #+#       #+# #+#     #+# #+#   #+#+# #+#     #+# #+#    #+# #+#        #+#    #+#     
+###    ###  ########   ########   ########  ##########       ###       ### ###     ### ###    #### ###     ###  ########  ########## ###    ###
+===================================================================================================================================================
+INFO  [2024-03-18 09:50:24,670] org.eclipse.jetty.setuid.SetUIDListener: Opened application@1702830d{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+INFO  [2024-03-18 09:50:24,670] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@6a937336{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+INFO  [2024-03-18 09:50:24,671] org.eclipse.jetty.server.Server: jetty-11.0.15; built: 2023-04-11T18:37:53.775Z; git: 5bc5e562c8d05c5862505aebe5cf83a61bdbcb96; jvm 21.0.1+12-29
+INFO  [2024-03-18 09:50:25,132] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+
+    GET     /building (org.example.resources.BuildingResource)
+    POST    /building (org.example.resources.BuildingResource)
+    GET     /building/name/{name} (org.example.resources.BuildingResource)
+    DELETE  /building/{name} (org.example.resources.BuildingResource)
+    PUT     /building/{name} (org.example.resources.BuildingResource)
+    GET     /company (org.example.resources.CompanyResource)
+    POST    /company (org.example.resources.CompanyResource)
+    DELETE  /company/{name} (org.example.resources.CompanyResource)
+    GET     /company/{name} (org.example.resources.CompanyResource)
+    PUT     /company/{name} (org.example.resources.CompanyResource)
+    GET     /employ (org.example.resources.EmployResource)
+    POST    /employ (org.example.resources.EmployResource)
+    DELETE  /employ/{id} (org.example.resources.EmployResource)
+    GET     /employ/{id} (org.example.resources.EmployResource)
+    PUT     /employ/{id} (org.example.resources.EmployResource)
+    GET     /flatinfo (org.example.resources.FlatInfoResource)
+    POST    /flatinfo (org.example.resources.FlatInfoResource)
+    GET     /flatinfo/building/{buildingName} (org.example.resources.FlatInfoResource)
+    GET     /flatinfo/building/{buildingName}/apartmentNumber/{apartmentNumber} (org.example.resources.FlatInfoResource)
+    PUT     /flatinfo/building/{buildingName}/apartmentNumber/{apartmentNumber} (org.example.resources.FlatInfoResource)
+    PUT     /flatinfo/update/building/{buildingName}/apartmentNumber/{apartmentNumber} (org.example.resources.FlatInfoResource)
+    DELETE  /flatinfo/{buildingName}/{apartmentNumber} (org.example.resources.FlatInfoResource)
+    GET     /residents (org.example.resources.ResidentsResource)
+    POST    /residents (org.example.resources.ResidentsResource)
+    GET     /residents/building/{building} (org.example.resources.ResidentsResource)
+    GET     /residents/building/{building}/flat/{flat} (org.example.resources.ResidentsResource)
+    GET     /residents/building/{building}/flat/{flat}/name/{name} (org.example.resources.ResidentsResource)
+    DELETE  /residents/delete/{id} (org.example.resources.ResidentsResource)
+    GET     /residents/flat/{flat} (org.example.resources.ResidentsResource)
+    GET     /residents/name/{name} (org.example.resources.ResidentsResource)
+    PUT     /residents/update/{id} (org.example.resources.ResidentsResource)
+
+INFO  [2024-03-18 09:50:25,134] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@611b35d6{/,null,AVAILABLE}
+INFO  [2024-03-18 09:50:25,137] io.dropwizard.core.setup.AdminEnvironment: tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+
+WARN  [2024-03-18 09:50:25,137] io.dropwizard.core.setup.AdminEnvironment: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
+!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
+!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
+!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2024-03-18 09:50:25,138] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@2ed9f6f8{/,null,AVAILABLE}
+INFO  [2024-03-18 09:50:25,167] org.eclipse.jetty.server.AbstractConnector: Started application@1702830d{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+INFO  [2024-03-18 09:50:25,172] org.eclipse.jetty.server.AbstractConnector: Started admin@6a937336{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+INFO  [2024-03-18 09:50:25,174] org.eclipse.jetty.server.Server: Started Server@5633ed82{STARTING}[11.0.15,sto=30000] @2606ms

@@ -10,7 +10,6 @@ import org.example.core.FlatInfo;
 
 public class FlatDAO {
 
-
   Connection connection;
 
   public FlatDAO(Connection connection) {
@@ -222,23 +221,21 @@ public class FlatDAO {
           boolean flatPetsElevator = resultSet.getBoolean("flat_pet_elevator");
 
           return new FlatInfo(
-                  buildingName,
-                  flatNumber,
-                  flatFloor,
-                  flatElevator,
-                  flatSqft,
-                  flatPeople,
-                  flatKids,
-                  flatPets,
-                  flatPetsElevator,
-                  flatId);
+              buildingName,
+              flatNumber,
+              flatFloor,
+              flatElevator,
+              flatSqft,
+              flatPeople,
+              flatKids,
+              flatPets,
+              flatPetsElevator,
+              flatId);
         }
       }
     }
     return null;
   }
-
-
 
   // Delete a Flat
   public boolean deleteFlat(String buildingName, int flatNumber) throws SQLException {
@@ -255,5 +252,4 @@ public class FlatDAO {
       throw new SQLException("Error in deleting flat", e);
     }
   }
-
 }

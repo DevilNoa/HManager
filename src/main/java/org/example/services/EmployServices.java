@@ -33,7 +33,7 @@ public class EmployServices {
   }
 
   // Method to delete an employ
-  public static boolean deleteEmploy(int id) throws SQLException{
-    return  employDAO.deleteEmploy(id);
+  public static boolean deleteEmploy(int id) throws SQLException {
+    return employDAO.deleteEmploy(id);
   }
 }
