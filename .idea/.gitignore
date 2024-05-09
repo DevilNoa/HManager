@@ -9,3 +9,11 @@
 
 # IntelliJ IDEA files
 .idea/
+*.html
+*.log
+*.svg
+*-list
+*.jar
+*.lst
+*.js
+*.css
