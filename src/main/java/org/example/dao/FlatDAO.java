@@ -168,11 +168,11 @@ public class FlatDAO {
   // todo: Find why this method is not updating "flatNumber" in the database
   // Update a Flat
   public FlatInfo updateFlat(String buildingName, int currentFlatNumber, FlatInfo updatedFlat)
-      throws SQLException {
+          throws SQLException {
     try {
       String sql =
-          "UPDATE flat_info SET flat_floor=?, flat_elevator=?, flat_sqm=?, flat_people=?, flat_kids=?, flat_pet=?, flat_pet_elevator=? "
-              + "WHERE building_name=? AND flat_number=?";
+              "UPDATE flat_info SET flat_floor=?, flat_elevator=?, flat_sqm=?, flat_people=?, flat_kids=?, flat_pet=?, flat_pet_elevator=? "
+                      + "WHERE building_name=? AND flat_number=?";
       PreparedStatement statement = connection.prepareStatement(sql);
       statement.setInt(1, updatedFlat.getFlatFloor());
       statement.setBoolean(2, updatedFlat.isFlatElevator());
@@ -190,9 +190,9 @@ public class FlatDAO {
       statement2.setInt(1, updatedFlat.getFlatNumber()); // Set the new flat number
       statement2.setString(2, buildingName);
       statement2.setInt(3, currentFlatNumber);
-      statement2.executeUpdate();
+      int rowsUpdated = statement2.executeUpdate();
 
-      if (statement2.executeUpdate() > 0) {
+      if (rowsUpdated > 0) {
         return updatedFlatHelper(buildingName, updatedFlat.getFlatNumber());
       } else {
         return null;

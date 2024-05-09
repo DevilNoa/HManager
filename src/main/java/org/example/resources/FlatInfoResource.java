@@ -102,10 +102,8 @@ public class FlatInfoResource {
       @PathParam("apartmentNumber") Integer flatNumber,
       FlatInfo newFlat) {
     try {
-      // Use the new apartment number from the newFlat object
-      int newApartmentNumber = newFlat.getFlatNumber();
-
-      FlatInfo flatInfo = flatInfoServices.updateFlat(buildingName, newApartmentNumber, newFlat);
+      // Use the current apartment number from the path variable
+      FlatInfo flatInfo = flatInfoServices.updateFlat(buildingName, flatNumber, newFlat);
       if (flatInfo != null) {
         return Response.ok(flatInfo).build();
       } else {
