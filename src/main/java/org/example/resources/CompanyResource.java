@@ -61,18 +61,20 @@ public class CompanyResource {
   @PUT
   @Path("/{name}")
   @Consumes(MediaType.APPLICATION_JSON)
-  public Response updateCompany(@PathParam("name") String name, Company updatedCompany) {
+  public Response updateCompany(@PathParam("name") String oldName, Company updatedCompany) {
     try {
-      Company existingCompany = companyServices.updateCompany(name, updatedCompany);
+      Company existingCompany = companyServices.updateCompany(oldName, updatedCompany);
       if (existingCompany != null) {
         return Response.ok(existingCompany).build();
       } else {
         return Response.status(Response.Status.NOT_FOUND).build();
       }
     } catch (SQLException e) {
+      System.err.println("Error updating company: " + e.getMessage());
+      e.printStackTrace();
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
     }
-  }
+    }
 
   // Delete a company endpoint
   @DELETE

@@ -73,22 +73,39 @@ public class CompanyDAO {
     return companies;
   }
 
-  // Update a company (update a row in the company table)
-  public void updateCompany(Company company) throws SQLException {
+  /// Update a company (update a row in the company table)
+  public void updateCompany(String oldName, Company company) throws SQLException {
     try {
-      String sql =
-          "UPDATE company SET company_name = ?, company_earnings = ? WHERE company_name = ?";
-      PreparedStatement statement = connection.prepareStatement(sql);
-      statement.setString(1, company.getName());
-      statement.setDouble(2, company.getEarnings());
-      statement.setString(3, company.getName());
+      // Start a transaction
+      connection.setAutoCommit(false);
 
-      int affectedRows = statement.executeUpdate();
+      // First, update the 'company' table
+      String sqlUpdateCompany = "UPDATE company SET company_name = ?, company_earnings = ? WHERE company_name = ?";
+      PreparedStatement statementCompany = connection.prepareStatement(sqlUpdateCompany);
+      statementCompany.setString(1, company.getName());
+      statementCompany.setDouble(2, company.getEarnings());
+      statementCompany.setString(3, oldName);
+      statementCompany.executeUpdate();
 
-      if (affectedRows > 0) {
-        new Company(company.getName(), company.getEarnings());
-      }
+      // Then, update the 'employ' table
+      String sqlUpdateEmploy = "UPDATE employ SET company_name = ? WHERE company_name = ?";
+      PreparedStatement statementEmploy = connection.prepareStatement(sqlUpdateEmploy);
+      statementEmploy.setString(1, company.getName());
+      statementEmploy.setString(2, oldName);
+      statementEmploy.executeUpdate();
+
+      // If both updates are successful, commit the transaction
+      connection.commit();
+
+      // Set auto commit back to true
+      connection.setAutoCommit(true);
     } catch (SQLException e) {
+      // If there is an error, rollback the transaction
+      connection.rollback();
+
+      // Set auto commit back to true
+      connection.setAutoCommit(true);
+
       throw new SQLException("Error in updating company", e);
     }
   }
