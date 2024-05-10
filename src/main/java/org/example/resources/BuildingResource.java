@@ -31,16 +31,15 @@ public class BuildingResource {
   }
 
   // Read a building by name endpoint
-  // conflict when building name = test
   @GET
   @Path("/name/{name}")
   public Response getBuildingByName(@PathParam("name") String name) {
     try {
       Building building = buildingServices.getBuildingByName(name);
-      if (building != null) {
-        return Response.ok(building).build();
+      if (building == null) {
+        return Response.status(Response.Status.NOT_FOUND).entity("No building found with this name").build();
       } else {
-        return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok(building).build();
       }
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -52,6 +51,9 @@ public class BuildingResource {
   public Response getAllBuildings() {
     try {
       List<Building> buildings = buildingServices.getAllBuildings();
+      if (buildings.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND).entity("No buildings found").build();
+      }
       return Response.ok(buildings).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();

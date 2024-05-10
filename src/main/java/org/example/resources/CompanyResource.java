@@ -36,10 +36,10 @@ public class CompanyResource {
   public Response getCompanyByName(@PathParam("name") String name) {
     try {
       Company company = companyServices.getCompanyByName(name);
-      if (company != null) {
-        return Response.ok(company).build();
+      if (company == null) {
+        return Response.status(Response.Status.NOT_FOUND).entity("No company found with this name").build();
       } else {
-        return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok(company).build();
       }
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -51,6 +51,9 @@ public class CompanyResource {
   public Response getAllCompanies() {
     try {
       List<Company> companies = companyServices.getAllCompanies();
+      if (companies.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND).entity("No companies found").build();
+      }
       return Response.ok(companies).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
