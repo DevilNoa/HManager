@@ -29,8 +29,8 @@ public class CompanyServices {
   }
 
   // Method to update a company
-  public Company updateCompany(String name, Company newCompany) throws SQLException {
-    companyDAO.updateCompany(newCompany);
+  public Company updateCompany(String oldName, Company newCompany) throws SQLException {
+    companyDAO.updateCompany(oldName, newCompany);
     return newCompany;
   }
 
