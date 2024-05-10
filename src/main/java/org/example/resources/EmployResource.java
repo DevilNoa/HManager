@@ -35,10 +35,10 @@ public class EmployResource {
   public Response getEmployByID(@PathParam("id") int id) {
     try {
       Employ employ = employServices.getEmployByID(id);
-      if (employ != null) {
-        return Response.ok(employ).build();
+      if (employ == null) {
+        return Response.status(Response.Status.NOT_FOUND).entity("No employ found with this ID").build();
       } else {
-        return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok(employ).build();
       }
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -50,6 +50,9 @@ public class EmployResource {
   public Response getAllEmploys() {
     try {
       List<Employ> employs = employServices.getAllEmploys();
+      if (employs.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND).entity("No employs found").build();
+      }
       return Response.ok(employs).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();

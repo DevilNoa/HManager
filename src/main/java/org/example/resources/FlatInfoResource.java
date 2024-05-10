@@ -24,6 +24,11 @@ public class FlatInfoResource {
   public Response getAllFlats() {
     try {
       List<FlatInfo> flatInfos = flatInfoServices.getAllFlats();
+      if (flatInfos.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND)
+                .entity("No flats found")
+                .build();
+      }
       return Response.ok(flatInfos).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -37,6 +42,11 @@ public class FlatInfoResource {
   public Response getAllFlatsByBuilding(@PathParam("buildingName") String buildingName) {
     try {
       List<FlatInfo> flatInfos = flatInfoServices.getAllFlatsByBuilding(buildingName);
+      if (flatInfos.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND)
+            .entity("No flats found in this building")
+            .build();
+      }
       return Response.ok(flatInfos).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -53,6 +63,11 @@ public class FlatInfoResource {
     try {
       List<FlatInfo> flatInfos =
           flatInfoServices.getAllFlatsByBuildingAndFlatNum(buildingName, apartmentNumber);
+      if (flatInfos.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND)
+            .entity("No flats found in this building with this apartment number")
+            .build();
+      }
       return Response.ok(flatInfos).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();

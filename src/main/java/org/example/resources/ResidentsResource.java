@@ -21,6 +21,9 @@ public class ResidentsResource {
   public Response getAllResidents() {
     try {
       List<Residents> residents = residentsServices.getAllResidents();
+      if (residents.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND).entity("No residents found").build();
+      }
       return Response.ok(residents).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -33,6 +36,11 @@ public class ResidentsResource {
   public Response getResidentsByFlat(@PathParam("flat") int flat) {
     try {
       List<Residents> residents = residentsServices.getResidentsByFlat(flat);
+      if (residents.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND)
+            .entity("No residents found in this flat")
+            .build();
+      }
       return Response.ok(residents).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -45,6 +53,11 @@ public class ResidentsResource {
   public Response getResidentsByBuilding(@PathParam("building") String building) {
     try {
       List<Residents> residents = residentsServices.getResidentsByBuilding(building);
+      if (residents.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND)
+            .entity("No residents found in this building")
+            .build();
+      }
       return Response.ok(residents).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -58,18 +71,28 @@ public class ResidentsResource {
       @PathParam("building") String building, @PathParam("flat") int flat) {
     try {
       List<Residents> residents = residentsServices.getResidentsByBuildingAndFlat(building, flat);
+      if (residents.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND)
+            .entity("No residents found in this building and flat")
+            .build();
+      }
       return Response.ok(residents).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
     }
   }
 
-  // Ger residents by name
+  // Get residents by name
   @GET
   @Path("/name/{name}")
   public Response getResidentsByName(@PathParam("name") String name) {
     try {
       List<Residents> residents = residentsServices.getResidentsByName(name);
+      if (residents.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND)
+            .entity("No residents found with this name")
+            .build();
+      }
       return Response.ok(residents).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -86,6 +109,11 @@ public class ResidentsResource {
     try {
       List<Residents> residents =
           residentsServices.getResidentsByBuildingAndFlatAndName(building, flat, name);
+      if (residents.isEmpty()) {
+        return Response.status(Response.Status.NOT_FOUND)
+            .entity("No residents found in this building, flat, and with this name")
+            .build();
+      }
       return Response.ok(residents).build();
     } catch (SQLException e) {
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
