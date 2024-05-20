@@ -26,7 +26,7 @@ public class ResidentsResource {
       }
       return Response.ok(residents).build();
     } catch (SQLException e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+      return Response.status(Response.Status.BAD_REQUEST).entity("Invalid request").build();
     }
   }
 
@@ -128,11 +128,10 @@ public class ResidentsResource {
       residentsServices.addResident(newResident);
       return Response.status(Response.Status.CREATED).build();
     } catch (SQLException e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("An error occurred while processing the request").build();
     }
   }
 
-  // todo: fix update resident
   // Update resident
   @PUT
   @Consumes("application/json")
@@ -142,7 +141,7 @@ public class ResidentsResource {
       residentsServices.updateResident(updatedResident);
       return Response.status(Response.Status.OK).build();
     } catch (SQLException e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("An error occurred while processing the request").build();
     }
   }
 
@@ -154,7 +153,7 @@ public class ResidentsResource {
       residentsServices.deleteResident(id);
       return Response.status(Response.Status.OK).build();
     } catch (SQLException e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("An error occurred while processing the request").build();
     }
   }
 }
