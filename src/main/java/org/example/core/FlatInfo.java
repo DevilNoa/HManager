@@ -38,6 +38,26 @@ public class FlatInfo {
     this.flatPetsElevator = flatPetsElevator;
     this.flatId = flatId;
   }
+  public FlatInfo(
+          String buildingName,
+          int flatNumber,
+          int flatFloor,
+          boolean flatElevator,
+          float flatSqft,
+          int flatPeople,
+          int flatKids,
+          boolean flatPets,
+          boolean flatPetsElevator) {
+    this.buildingName = buildingName;
+    this.flatNumber = flatNumber;
+    this.flatFloor = flatFloor;
+    this.flatElevator = flatElevator;
+    this.flatSqft = flatSqft;
+    this.flatPeople = flatPeople;
+    this.flatKids = flatKids;
+    this.flatPets = flatPets;
+    this.flatPetsElevator = flatPetsElevator;
+  }
 
   public String getBuildingName() {
     return buildingName;

@@ -165,35 +165,35 @@ public class FlatDAO {
     }
   }
 
-  // todo: Find why this method is not updating "flatNumber" in the database
   // Update a Flat
-  public FlatInfo updateFlat(String buildingName, int currentFlatNumber, FlatInfo updatedFlat)
+  public FlatInfo updateFlat(String currentBuildingName, int currentFlatNumber, FlatInfo updatedFlat)
           throws SQLException {
     try {
       String sql =
-              "UPDATE flat_info SET flat_floor=?, flat_elevator=?, flat_sqm=?, flat_people=?, flat_kids=?, flat_pet=?, flat_pet_elevator=? "
+              "UPDATE flat_info SET building_name=?, flat_floor=?, flat_elevator=?, flat_sqm=?, flat_people=?, flat_kids=?, flat_pet=?, flat_pet_elevator=? "
                       + "WHERE building_name=? AND flat_number=?";
       PreparedStatement statement = connection.prepareStatement(sql);
-      statement.setInt(1, updatedFlat.getFlatFloor());
-      statement.setBoolean(2, updatedFlat.isFlatElevator());
-      statement.setFloat(3, updatedFlat.getFlatSqft());
-      statement.setInt(4, updatedFlat.getFlatPeople());
-      statement.setInt(5, updatedFlat.getFlatKids());
-      statement.setBoolean(6, updatedFlat.isFlatPets());
-      statement.setBoolean(7, updatedFlat.isFlatPetsElevator());
-      statement.setString(8, buildingName);
-      statement.setInt(9, currentFlatNumber);
+      statement.setString(1, updatedFlat.getBuildingName());
+      statement.setInt(2, updatedFlat.getFlatFloor());
+      statement.setBoolean(3, updatedFlat.isFlatElevator());
+      statement.setFloat(4, updatedFlat.getFlatSqft());
+      statement.setInt(5, updatedFlat.getFlatPeople());
+      statement.setInt(6, updatedFlat.getFlatKids());
+      statement.setBoolean(7, updatedFlat.isFlatPets());
+      statement.setBoolean(8, updatedFlat.isFlatPetsElevator());
+      statement.setString(9, currentBuildingName);
+      statement.setInt(10, currentFlatNumber);
       statement.executeUpdate();
 
       String sql2 = "UPDATE flat_info SET flat_number=? WHERE building_name=? AND flat_number=?";
       PreparedStatement statement2 = connection.prepareStatement(sql2);
       statement2.setInt(1, updatedFlat.getFlatNumber()); // Set the new flat number
-      statement2.setString(2, buildingName);
+      statement2.setString(2, updatedFlat.getBuildingName());
       statement2.setInt(3, currentFlatNumber);
       int rowsUpdated = statement2.executeUpdate();
 
       if (rowsUpdated > 0) {
-        return updatedFlatHelper(buildingName, updatedFlat.getFlatNumber());
+        return updatedFlatHelper(updatedFlat.getBuildingName(), updatedFlat.getFlatNumber());
       } else {
         return null;
       }
@@ -211,7 +211,6 @@ public class FlatDAO {
 
       try (ResultSet resultSet = statement.executeQuery()) {
         if (resultSet.next()) {
-          int flatId = resultSet.getInt("flat_id");
           int flatFloor = resultSet.getInt("flat_floor");
           boolean flatElevator = resultSet.getBoolean("flat_elevator");
           float flatSqft = resultSet.getFloat("flat_sqm");
@@ -229,8 +228,7 @@ public class FlatDAO {
               flatPeople,
               flatKids,
               flatPets,
-              flatPetsElevator,
-              flatId);
+              flatPetsElevator);
         }
       }
     }
