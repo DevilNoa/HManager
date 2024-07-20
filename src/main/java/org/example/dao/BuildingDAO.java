@@ -52,19 +52,19 @@ public class BuildingDAO {
       ResultSet resultSet = statement.executeQuery();
 
       if (resultSet.next()) {
+        int buildingId = resultSet.getInt("building_id");
         String companyName = resultSet.getString("company_name");
         String address = resultSet.getString("building_address");
         int floors = resultSet.getInt("building_floors");
         int flats = resultSet.getInt("building_flats");
         float squareCommonPart = resultSet.getFloat("building_square_common_part");
 
-        return new Building(name, companyName, address, floors, flats, squareCommonPart);
+        return new Building(buildingId, name, companyName, address, floors, flats, squareCommonPart);
       } else {
         return null;
       }
     } catch (SQLException e) {
       throw new SQLException("Error in getting building", e.getMessage());
-      //      System.out.println("Error in getting building: " + e.getMessage());
     }
   }
 
@@ -78,6 +78,7 @@ public class BuildingDAO {
       ResultSet resultSet = statement.executeQuery();
 
       while (resultSet.next()) {
+        int buildingId = resultSet.getInt("building_id");
         String name = resultSet.getString("building_name");
         String companyName = resultSet.getString("company_name");
         String address = resultSet.getString("building_address");
@@ -86,8 +87,8 @@ public class BuildingDAO {
         float squareCommonPart = resultSet.getFloat("building_square_common_part");
 
         Building building =
-            new Building(name, companyName, address, floors, flats, squareCommonPart);
-        buildings.add(building); // Add the building to the list
+            new Building(buildingId, name, companyName, address, floors, flats, squareCommonPart);
+        buildings.add(building);
       }
     } catch (SQLException e) {
       throw new SQLException("Error in getting buildings", e);
