@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/src/DBchanges/001DB_Hmaniger.sql" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/example/dao/BuildingDAO.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/example/dao/EmployDAO.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/HManiger.sql" dialect="GenericSQL" />
   </component>
 </project>

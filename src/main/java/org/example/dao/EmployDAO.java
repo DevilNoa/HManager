@@ -81,8 +81,17 @@ public class EmployDAO {
 
   public Employ updateEmploy(int id, Employ updatedEmploy) throws SQLException {
     try {
+      // Check if company exists
+      String checkCompanySql = "SELECT 1 FROM company WHERE company_name = ?";
+      PreparedStatement checkCompanyStmt = connection.prepareStatement(checkCompanySql);
+      checkCompanyStmt.setString(1, updatedEmploy.getCompanyName());
+      ResultSet rs = checkCompanyStmt.executeQuery();
+      if (!rs.next()) {
+        throw new SQLException("Company does not exist");
+      }
+
       String sql =
-          "UPDATE employ SET employ_name = ?, company_name = ?, building_address = ? WHERE employ_id = ?";
+              "UPDATE employ SET employ_name = ?, company_name = ?, building_address = ? WHERE employ_id = ?";
       PreparedStatement statement = connection.prepareStatement(sql);
       statement.setString(1, updatedEmploy.getName());
       statement.setString(2, updatedEmploy.getCompanyName());
@@ -91,6 +100,7 @@ public class EmployDAO {
       statement.executeUpdate();
       return updatedEmploy;
     } catch (SQLException e) {
+      e.printStackTrace();
       throw new SQLException("Error in updating employ", e);
     }
   }
